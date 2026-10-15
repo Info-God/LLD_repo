@@ -1,16 +1,15 @@
 package stackoverflow;
 
-import stackoverflow.enums.VoteType;
+import java.util.List;
+import java.util.Set;
 import stackoverflow.entities.Answer;
 import stackoverflow.entities.Question;
 import stackoverflow.entities.Tag;
 import stackoverflow.entities.User;
+import stackoverflow.enums.VoteType;
 import stackoverflow.strategy.SearchStrategy;
 import stackoverflow.strategy.TagSearchStrategy;
 import stackoverflow.strategy.UserSearchStrategy;
-
-import java.util.List;
-import java.util.Set;
 
 public class StackOverflowDemo {
     public static void main(String[] args) {
@@ -26,6 +25,7 @@ public class StackOverflowDemo {
         Tag javaTag = new Tag("java");
         Tag designPatternsTag = new Tag("design-patterns");
         Set<Tag> tags = Set.of(javaTag, designPatternsTag);
+   
         Question question = service.postQuestion(alice.getId(), "How to implement Observer Pattern?", "Details about Observer Pattern...", tags);
         printReputations(alice, bob, charlie);
 
@@ -55,12 +55,17 @@ public class StackOverflowDemo {
         );
         List<Question> searchResults = service.searchQuestions(filtersC);
         searchResults.forEach(q -> System.out.println("  - Found: " + q.getTitle()));
+    
     }
 
     private static void printReputations(User... users) {
+
+        
         System.out.println("--- Current Reputations ---");
         for(User user : users) {
             System.out.printf("%s: %d\n", user.getName(), user.getReputation());
         }
+
+
     }
 }

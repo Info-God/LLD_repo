@@ -1,13 +1,12 @@
 package stackoverflow;
 
-import stackoverflow.enums.VoteType;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import stackoverflow.entities.*;
+import stackoverflow.enums.VoteType;
 import stackoverflow.observer.PostObserver;
 import stackoverflow.observer.ReputationManager;
 import stackoverflow.strategy.SearchStrategy;
-
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class StackOverflowService {
     private final Map<String, User> users = new ConcurrentHashMap<>();
